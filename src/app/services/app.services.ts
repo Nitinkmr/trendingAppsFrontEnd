@@ -18,4 +18,8 @@ export class AppService {
   getApps():Observable<any>{
       return this.http.get(this.appUrl);
   }
+
+  getApp(packageName):Observable<any>{
+      return this.http.get(this.appUrl + packageName);
+  }
 }

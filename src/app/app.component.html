@@ -1,9 +1,9 @@
 
 <div class="apps" *ngIf="appList">
 	<div [ngGrid]="{'resizeable': false}">
-    <div *ngFor="let app of appList" [(ngGridItem)]="app.config">
+    <div *ngFor="let app of appList" [(ngGridItem)]="app.config" (click)="onItemClick($event, app)">
     	
-        <div class="col-sm-8 " > 
+        <div class="col-sm-8" > 
 		  <img class="card-img-top" src="{{app.imgUrl}}" alt="APP LOGO" >
 		  <div class="card-body">
 		    <p class="card-text">{{app.name}}</p>
@@ -11,3 +11,4 @@
 		</div>
     </div>
 </div>
+<app-single-app-component [model] = "selectedApp"> SECOND HERE</app-single-app-component> 
