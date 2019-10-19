@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   
   title = 'trendingApps-frontEnd';
   public show:boolean = true;
-  selectedApp : AppModel[];
+  selectedApp : any;
   appList : AppModel[];
   tempAppList:AppModel[];
 
@@ -24,8 +24,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.appService.getApps().subscribe(response => {    
     
-    if(this.tempAppList == null || this.tempAppList.length == 0)
-    {
+    
       this.appList = response.data;
      
       for (var i = 0; i < this.appList.length; i++)
@@ -38,8 +37,7 @@ export class AppComponent implements OnInit{
                                        row: Math.floor((i)/5)};
           this.appList[i].name = name;
       }
-    }else
-      this.appList = this.tempAppList;
+    
     
    });
 
@@ -50,7 +48,6 @@ export class AppComponent implements OnInit{
    // this.show = !this.show;
     console.log(app);
     this.tempAppList = this.appList;
-    this.appList = [];
     this.selectedApp = app;
     this.router.navigateByUrl('/apps/' + app.package);
 

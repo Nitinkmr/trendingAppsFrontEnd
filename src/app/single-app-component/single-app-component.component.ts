@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { Router } from '@angular/router';
 import {AppService} from '../services/app.services';
 @Component({
   selector: 'app-single-app-component',
@@ -8,11 +9,15 @@ import {AppService} from '../services/app.services';
 export class SingleAppComponentComponent implements OnInit {
 	
 	@Input() model;
-  	constructor(private appService:AppService) { }
+  	constructor(private appService:AppService,private router: Router) { }
 
   ngOnInit() {
-  	console.log("second component");
-  	this.appService.getApp("");
+  	var packageName = window.location.href.split("/");
+  	packageName = packageName[4];
+  	var app = this.appService.getApp(packageName).subscribe( response =>{
+  		console.log(response);
+  	});
+  	
   }
 
 }

@@ -20,6 +20,7 @@ export class AppService {
   }
 
   getApp(packageName):Observable<any>{
-      return this.http.get(this.appUrl + packageName);
+    console.log(packageName);
+      return this.http.get(this.appUrl + "/" + packageName);
   }
 }

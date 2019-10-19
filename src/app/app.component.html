@@ -1,5 +1,5 @@
 
-<div class="apps" *ngIf="appList">
+<div class="apps"  *ngIf="router.url == '/'">
 	<div [ngGrid]="{'resizeable': false}">
     <div *ngFor="let app of appList" [(ngGridItem)]="app.config" (click)="onItemClick($event, app)">
     	
@@ -11,4 +11,5 @@
 		</div>
     </div>
 </div>
-<app-single-app-component [model] = "selectedApp"> SECOND HERE</app-single-app-component> 
+ <app-single-app-component [model] = "selectedApp"> SECOND HERE</app-single-app-component>  
+<!-- <router-outlet></router-outlet> -->
