@@ -18,8 +18,8 @@ export class AppComponent implements OnInit{
   
   ngOnInit(): void {
     console.log("started");
-   this.appService.getApps().subscribe(apps => {
-     this.appList = apps;
+   this.appService.getApps().subscribe(response => {    
+     this.appList = response.data;
      console.log(this.appList);
    });
   }
