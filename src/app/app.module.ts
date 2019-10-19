@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppService } from './services/app.services';
+import { NgGridModule } from 'angular2-grid';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AppService } from './services/app.services';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgGridModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

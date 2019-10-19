@@ -1,8 +1,13 @@
+
 <div class="apps" *ngIf="appList">
-<tr *ngFor="let app of appList">
-  <td>{{app.name}}</td>
-  <img src="{{app.imgUrl}}">
-
-</tr>
-
+	<div [ngGrid]="{'resizeable': false}">
+    <div *ngFor="let app of appList" [(ngGridItem)]="app.config">
+    	
+        <div class="col-sm-8 " > 
+		  <img class="card-img-top" src="{{app.imgUrl}}" alt="APP LOGO" >
+		  <div class="card-body">
+		    <p class="card-text">{{app.name}}</p>
+		  </div>
+		</div>
+    </div>
 </div>
