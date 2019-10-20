@@ -1,23 +1,44 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { Router } from '@angular/router';
-import {AppService} from '../services/app.services';
+import { Component, OnInit,Input,ChangeDetectorRef  } from '@angular/core';
+import {AppModel} from '../models/AppModel';
+import {DataServiceService} from '../data-service.service';
+
 @Component({
   selector: 'app-single-app-component',
   templateUrl: './single-app-component.component.html',
   styleUrls: ['./single-app-component.component.scss']
 })
 export class SingleAppComponentComponent implements OnInit {
+
+	app = null;
+	visible = false;
+	imageObject = [];
+  constructor(private dataService : DataServiceService,private cdr: ChangeDetectorRef) {
 	
-	@Input() model;
-  	constructor(private appService:AppService,private router: Router) { }
+	      var packageName = window.location.href.split("/")[4];
+	      this.dataService.getApp(packageName).subscribe( response =>{
+	      	this.app = response['data'][0];
+	        console.log(response);
+	        this.visible = true;
+	        
+	        for(var imgNo in this.app.screenShotUrls)
+	        {
+	        	this.imageObject.push({'url':this.app.screenShotUrls[imgNo],alt: 'alt of image',
+        title: 'title of image'});
+	        }
+	       console.log(this.imageObject);
+	         this.cdr.markForCheck();
+	      });
+    }
 
   ngOnInit() {
-  	var packageName = window.location.href.split("/");
-  	packageName = packageName[4];
-  	var app = this.appService.getApp(packageName).subscribe( response =>{
-  		console.log(response);
-  	});
-  	
+
+	      // var packageName = window.location.href.split("/")[4];
+	      // this.dataService.getApp(packageName).subscribe( response =>{
+	      // 	this.app = response['data'][0];
+	      // 	this.visible = true;
+	      //   console.log(response);
+	      // });
   }
+
 
 }

@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/trendingApps-frontEndFinal",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

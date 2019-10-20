@@ -1,0 +1,20 @@
+<div style="text-align:center">
+  <h1>
+    Apps Trending On Google Play Store
+  </h1>
+</div>
+  
+  <button (click)="refresh()" type="button" class="btn btn-info"> REFRESH LIST</button>
+
+<div [ngGrid]="{'resizeable': false}">
+    <div *ngFor="let app of appList" [(ngGridItem)]="app.config" >
+    	<a routerLink="apps/{{app.package}}">
+	        <div class="col-sm-8" > 
+			  <img class="card-img-top" src="{{app.imgUrl}}" alt="APP LOGO" >
+			  <div class="card-body">
+			    <p class="card-text">{{app.name}}</p>
+			  </div>
+			</div>
+		</a>
+    </div>
+</div>

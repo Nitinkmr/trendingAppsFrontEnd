@@ -1,15 +1,4 @@
+<!--The content below is only a placeholder and can be replaced.-->
 
-<div class="apps"  *ngIf="router.url == '/'">
-	<div [ngGrid]="{'resizeable': false}">
-    <div *ngFor="let app of appList" [(ngGridItem)]="app.config" (click)="onItemClick($event, app)">
-    	
-        <div class="col-sm-8" > 
-		  <img class="card-img-top" src="{{app.imgUrl}}" alt="APP LOGO" >
-		  <div class="card-body">
-		    <p class="card-text">{{app.name}}</p>
-		  </div>
-		</div>
-    </div>
-</div>
- <app-single-app-component [model] = "selectedApp"> SECOND HERE</app-single-app-component>  
-<!-- <router-outlet></router-outlet> -->
+
+<router-outlet></router-outlet>
